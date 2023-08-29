@@ -58,11 +58,12 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun EventGrid(modifier: Modifier = Modifier) {
     val events = listOf(
-        Event("Imagine Dragons", 4),
-        Event("tets", 4),
-        Event("tets", 4),
-        Event("tets", 4)
+        Event("Imagine Dragons", 4, R.drawable.eventconcert1),
+        Event("Dua Lipa", 4, R.drawable.eventconcert2),
+        Event("The Vamps", 4, R.drawable.eventconcert3),
+        Event("Martin Garrix", 4, R.drawable.eventconcert4)
     )
+
 
     LazyVerticalGrid(
         columns = GridCells.Fixed(2),
@@ -103,7 +104,7 @@ fun EventCard(event: Event, modifier: Modifier = Modifier) {
         Row {
             Box {
                 Image(
-                    painter = painterResource(id = R.drawable.eventconcert1),
+                    painter = painterResource(id = event.imageResourceId), // Use event's image resource
                     contentDescription = null,
                     modifier = modifier
                         .size(width = 68.dp, height = 68.dp)
@@ -134,6 +135,7 @@ fun EventCard(event: Event, modifier: Modifier = Modifier) {
         }
     }
 }
+
 
 @Preview(showBackground = true)
 @Composable
