@@ -1,4 +1,5 @@
 package com.example.lab5biancacalderon
+
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -106,16 +107,16 @@ fun ListScreen(concertLocations: List<ConcertLocation>) {
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun ListScreenPreview() {
-    Lab5BiancaCalderonTheme {
-        val concertLocations = listOf(
-            ConcertLocation("Imagine Dragons", "Los Angeles, CA", R.drawable.eventconcert1),
-            ConcertLocation("Dua Lipa", "New York, NY", R.drawable.eventconcert2),
-            ConcertLocation("The Vamps", "London, UK", R.drawable.eventconcert3),
-            ConcertLocation("Martin Garrix", "Amsterdam, Netherlands", R.drawable.eventconcert4)
-        )
-        ListScreen(concertLocations = concertLocations)
-    }
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun ListScreenPreview() {
+    //Lab5BiancaCalderonTheme {
+        //val concertLocations = listOf(
+            //ConcertLocation("Imagine Dragons", "Los Angeles, CA", R.drawable.eventconcert1),
+            //ConcertLocation("Dua Lipa", "New York, NY", R.drawable.eventconcert2),
+          //  ConcertLocation("The Vamps", "London, UK", R.drawable.eventconcert3),
+        //    ConcertLocation("Martin Garrix", "Amsterdam, Netherlands", R.drawable.eventconcert4)
+      //  )
+    //    ListScreen(concertLocations = concertLocations)
+  //  }
+//}
