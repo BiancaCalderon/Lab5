@@ -137,18 +137,18 @@ fun ProfileScreen(user: UserProfile, modifier: Modifier = Modifier) {
 
 
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    Lab5BiancaCalderonTheme {
-        val user = UserProfile(
-            "Bianca Calderon",
-            "@darkcat",
-            "Software Engineer",
-            R.drawable.iconprofile,
-            listOf("Imagine Dragons", "Dua Lipa", "The Vamps")
-        )
-        ProfileScreen(user = user)
-    }
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun GreetingPreview() {
+ //   Lab5BiancaCalderonTheme {
+   //     val user = UserProfile(
+     //       "Bianca Calderon",
+         //   "@darkcat",
+       //     "Software Engineer",
+           // R.drawable.iconprofile,
+            //listOf("Imagine Dragons", "Dua Lipa", "The Vamps")
+        //)
+        //ProfileScreen(user = user)
+    //}
+//}
 

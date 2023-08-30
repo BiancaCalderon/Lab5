@@ -45,9 +45,9 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    //EventGrid(
-                      //  modifier = Modifier.padding(dimensionResource(R.dimen.padding_small))
-                    //)
+                    EventGrid(
+                      modifier = Modifier.padding(dimensionResource(R.dimen.padding_small))
+                    )
                 }
             }
         }
@@ -104,7 +104,7 @@ fun EventCard(event: Event, modifier: Modifier = Modifier) {
         Row {
             Box {
                 Image(
-                    painter = painterResource(id = R.drawable.eventconcert1),
+                    painter = painterResource(id = event.imageResourceId),
                     contentDescription = null,
                     modifier = modifier
                         .size(width = 68.dp, height = 68.dp)
@@ -136,12 +136,12 @@ fun EventCard(event: Event, modifier: Modifier = Modifier) {
     }
 }
 
-//@Preview(showBackground = true)
-//@Composable
-//fun GreetingPreview() {
-   // Lab5BiancaCalderonTheme {
-     //   EventGrid(
-       //     modifier = Modifier.padding(dimensionResource(R.dimen.padding_small))
-        //)
-    //}
-//}
+@Preview(showBackground = true)
+@Composable
+fun GreetingPreview() {
+ Lab5BiancaCalderonTheme {
+   EventGrid(
+     modifier = Modifier.padding(dimensionResource(R.dimen.padding_small))
+)
+}
+}
