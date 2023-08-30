@@ -91,22 +91,22 @@ fun ProfileScreen(user: UserProfile, modifier: Modifier = Modifier) {
                     text = "User Details:",
                     fontWeight = FontWeight.Bold,
                     modifier = Modifier
-                        .padding(vertical = 8.dp, horizontal = 16.dp) // Ajusta los valores según tus necesidades
+                        .padding(vertical = 8.dp, horizontal = 16.dp)
                 )
             }
             Text(
                 text = user.name,
                 fontWeight = FontWeight.Bold,
-                modifier = Modifier.padding(bottom = 4.dp) // Ajusta el valor según tus necesidades
+                modifier = Modifier.padding(bottom = 4.dp)
             )
             Text(
                 text = user.username,
                 color = Color.Gray,
-                modifier = Modifier.padding(bottom = 4.dp) // Ajusta el valor según tus necesidades
+                modifier = Modifier.padding(bottom = 4.dp)
             )
             Text(
                 text = user.occupation,
-                modifier = Modifier.padding(bottom = 4.dp) // Ajusta el valor según tus necesidades
+                modifier = Modifier.padding(bottom = 4.dp)
             )
 
             Surface(
@@ -118,7 +118,7 @@ fun ProfileScreen(user: UserProfile, modifier: Modifier = Modifier) {
                     text = "Favorites:",
                     fontWeight = FontWeight.Bold,
                     modifier = Modifier
-                        .padding(vertical = 8.dp, horizontal = 16.dp) // Ajusta los valores según tus necesidades
+                        .padding(vertical = 8.dp, horizontal = 16.dp)
                 )
             }
 
