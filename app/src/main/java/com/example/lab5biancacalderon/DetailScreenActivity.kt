@@ -117,15 +117,15 @@ fun DetailScreen(concertLocation: ConcertLocation, modifier: Modifier = Modifier
 
 
 
-@Preview(showBackground = true)
-@Composable
-fun DetailScreenPreview() {
-    Lab5BiancaCalderonTheme {
-        val concertLocation = ConcertLocation(
-            "Imagine Dragons",
-            "Los Angeles, CA",
-            R.drawable.eventconcert1
-        )
-        DetailScreen(concertLocation = concertLocation)
-    }
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun DetailScreenPreview() {
+//    Lab5BiancaCalderonTheme {
+//        val concertLocation = ConcertLocation(
+//            "Imagine Dragons",
+//            "Los Angeles, CA",
+//            R.drawable.eventconcert1
+//        )
+//        DetailScreen(concertLocation = concertLocation)
+//    }
+//}

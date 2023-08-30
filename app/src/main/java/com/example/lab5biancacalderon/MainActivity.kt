@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -12,6 +13,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -31,6 +33,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.lab5biancacalderon.ui.theme.Lab5BiancaCalderonTheme
@@ -44,9 +47,9 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    //EventGrid(
-                      //modifier = Modifier.padding(dimensionResource(R.dimen.padding_small))
-                    //)
+                    EventGrid(
+                      modifier = Modifier.padding(dimensionResource(R.dimen.padding_small))
+                    )
                 }
             }
         }
@@ -57,10 +60,10 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun EventGrid(modifier: Modifier = Modifier) {
     val events = listOf(
-        Event("Imagine Dragons", 4, R.drawable.eventconcert1),
-        Event("Dua Lipa", 4, R.drawable.eventconcert2),
-        Event("The Vamps", 4, R.drawable.eventconcert3),
-        Event("Martin Garrix", 4, R.drawable.eventconcert4)
+        Event("Imagine Dragons", 426, R.drawable.eventconcert1),
+        Event("Dua Lipa", 150, R.drawable.eventconcert2),
+        Event("The Vamps", 26, R.drawable.eventconcert3),
+        Event("Martin Garrix", 48, R.drawable.eventconcert4)
     )
 
 
@@ -70,6 +73,20 @@ fun EventGrid(modifier: Modifier = Modifier) {
         horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_small)),
         modifier = modifier
     ) {
+        item(span = { GridItemSpan(maxLineSpan) }) {
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(Color.Blue.copy(alpha = 0.5f))
+                    .padding(16.dp)
+            ) {
+                Text(
+                    text = "Bienvendi@ a TodoEvento+",
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier.wrapContentSize()
+                )
+            }
+        }
         item(span = { GridItemSpan(maxLineSpan) }) {
             Text(
                 "This Favorites",
@@ -135,12 +152,12 @@ fun EventCard(event: Event, modifier: Modifier = Modifier) {
     }
 }
 
-//@Preview(showBackground = true)
-//@Composable
-//fun GreetingPreview() {
- //Lab5BiancaCalderonTheme {
-   //EventGrid(
-  //   modifier = Modifier.padding(dimensionResource(R.dimen.padding_small))
-//)
-//}
-//}
+@Preview(showBackground = true)
+@Composable
+fun GreetingPreview() {
+ Lab5BiancaCalderonTheme {
+   EventGrid(
+     modifier = Modifier.padding(dimensionResource(R.dimen.padding_small))
+)
+}
+}
