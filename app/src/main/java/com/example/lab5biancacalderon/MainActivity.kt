@@ -1,6 +1,5 @@
 package com.example.lab5biancacalderon
 
-
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -45,9 +44,9 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    EventGrid(
-                      modifier = Modifier.padding(dimensionResource(R.dimen.padding_small))
-                    )
+                    //EventGrid(
+                      //modifier = Modifier.padding(dimensionResource(R.dimen.padding_small))
+                    //)
                 }
             }
         }
@@ -136,12 +135,12 @@ fun EventCard(event: Event, modifier: Modifier = Modifier) {
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
- Lab5BiancaCalderonTheme {
-   EventGrid(
-     modifier = Modifier.padding(dimensionResource(R.dimen.padding_small))
-)
-}
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun GreetingPreview() {
+ //Lab5BiancaCalderonTheme {
+   //EventGrid(
+  //   modifier = Modifier.padding(dimensionResource(R.dimen.padding_small))
+//)
+//}
+//}
