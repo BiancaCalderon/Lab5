@@ -1,8 +1,7 @@
-package com.example.lab5biancacalderon
-
 data class UserProfile(
     val name: String,
-    val profileImageResId: Int,
-    val favoriteConcerts: List<Concert>
-
+    val username: String,
+    val occupation: String,
+    val profileImageResourceId: Int,
+    val favorites: List<String>
 )

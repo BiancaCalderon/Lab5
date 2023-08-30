@@ -7,4 +7,3 @@ data class Event(val name: String, val availableSeats: Int, val imageResourceId:
 
 
 )
-
