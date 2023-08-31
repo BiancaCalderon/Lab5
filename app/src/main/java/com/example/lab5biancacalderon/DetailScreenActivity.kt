@@ -18,9 +18,12 @@ import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.lab5biancacalderon.R
 import com.example.lab5biancacalderon.ui.theme.Lab5BiancaCalderonTheme
 
@@ -45,7 +48,6 @@ class DetailScreenActivity : ComponentActivity() {
         }
     }
 }
-
 @Composable
 fun DetailScreen(concertLocation: ConcertLocation, modifier: Modifier = Modifier) {
     Column(
@@ -60,9 +62,9 @@ fun DetailScreen(concertLocation: ConcertLocation, modifier: Modifier = Modifier
                 .fillMaxWidth()
                 .height(200.dp)
                 .clip(RectangleShape)
-                .background(Color.Blue.copy(alpha = 0.5f))
+                .background(Color.Black.copy(alpha = 0.10f))
                 .padding(16.dp)
-                .clickable { /* Handle click if needed */ },
+                .clickable { },
             contentScale = ContentScale.Crop
         )
 
@@ -81,16 +83,44 @@ fun DetailScreen(concertLocation: ConcertLocation, modifier: Modifier = Modifier
 
         Spacer(modifier = Modifier.height(8.dp))
 
-        Text(
-            text = "Date and Time: September 10, 2023 - 8:00 PM"
-        )
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Image(
+                painter = painterResource(id = R.drawable.calendar),
+                contentDescription = null,
+                modifier = Modifier
+                    .size(24.dp)
+                    .padding(end = 8.dp)
+            )
+            Text(
+                text = "September 10, 2023",
+                modifier = Modifier.padding(end = 16.dp)
+            )
+            Text(
+                text = "8:00 P:M",
+                textAlign = TextAlign.Right
+            )
+        }
+
         Spacer(modifier = Modifier.height(10.dp))
 
         Text(
-            text = "About: Imagine Dragons es una banda estadounidense de pop rock originaria de Las Vegas, " +
+            text = "About:   " +
+                    "Imagine Dragons es una banda estadounidense de pop rock originaria de Las Vegas, " +
                     "Nevada. Está compuesta por Dan Reynolds, Wayne Sermon, Ben McKee y Daniel Platzman. " +
                     "Ganó el reconocimiento mundial con el lanzamiento de su álbum de estudio debut Night " +
-                    "Visions, y con su canción \"It's Time\"."
+                    "Visions, y con su canción \"It's Time\".",
+            style = TextStyle(
+                fontSize = 16.sp,
+                fontWeight = FontWeight.Normal,
+                textAlign = TextAlign.Center,
+                lineHeight = 24.sp
+            ),
+            modifier = Modifier
+                .padding(vertical = dimensionResource(R.dimen.padding_small))
+                .fillMaxWidth()
         )
 
         Spacer(modifier = Modifier.weight(1f))
@@ -116,16 +146,17 @@ fun DetailScreen(concertLocation: ConcertLocation, modifier: Modifier = Modifier
 }
 
 
+@Preview(showBackground = true)
+@Composable
+fun DetailScreenPreview() {
+    Lab5BiancaCalderonTheme {
+        val concertLocation = ConcertLocation(
+            "Imagine Dragons",
+            "Los Angeles, CA",
+            R.drawable.eventconcert1
+        )
+        DetailScreen(concertLocation = concertLocation)
+    }
+}
 
-//@Preview(showBackground = true)
-//@Composable
-//fun DetailScreenPreview() {
-//    Lab5BiancaCalderonTheme {
-//        val concertLocation = ConcertLocation(
-//            "Imagine Dragons",
-//            "Los Angeles, CA",
-//            R.drawable.eventconcert1
-//        )
-//        DetailScreen(concertLocation = concertLocation)
-//    }
-//}
+

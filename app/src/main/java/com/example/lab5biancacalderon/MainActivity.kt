@@ -10,18 +10,24 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.layout.wrapContentWidth
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -60,12 +66,13 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun EventGrid(modifier: Modifier = Modifier) {
     val events = listOf(
-        Event("Imagine Dragons", 426, R.drawable.eventconcert1),
+        Event("Imagine Dragons", 226, R.drawable.eventconcert1),
         Event("Dua Lipa", 150, R.drawable.eventconcert2),
         Event("The Vamps", 26, R.drawable.eventconcert3),
         Event("Martin Garrix", 48, R.drawable.eventconcert4)
     )
 
+    val maxLineSpan = 2
 
     LazyVerticalGrid(
         columns = GridCells.Fixed(2),
@@ -77,36 +84,59 @@ fun EventGrid(modifier: Modifier = Modifier) {
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(Color.Blue.copy(alpha = 0.5f))
+                    .background(Color(android.graphics.Color.parseColor("#f2edf6")))
                     .padding(16.dp)
             ) {
-                Text(
-                    text = "Bienvendi@ a TodoEvento+",
-                    fontWeight = FontWeight.Bold,
-                    modifier = Modifier.wrapContentSize()
-                )
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(
+                        text = "TodoEventos",
+                        fontWeight = FontWeight.Bold,
+                        modifier = Modifier.padding(32.dp)
+                    )
+                    Image(
+                        painter = painterResource(id = R.drawable.menu),
+                        contentDescription = null,
+                        modifier = Modifier
+                            .size(32.dp)
+                            .padding(8.dp)
+                    )
+                }
             }
         }
         item(span = { GridItemSpan(maxLineSpan) }) {
-            Text(
-                "This Favorites",
-                Modifier
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
                     .border(1.dp, Color.White)
                     .height(80.dp)
-                    .wrapContentSize()
-            )
+            ) {
+                Text(
+                    "Your Favorites",
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier.wrapContentSize(Alignment.Center)
+                )
+            }
         }
         items(events) { topic ->
             EventCard(topic)
         }
         item(span = { GridItemSpan(maxLineSpan) }) {
-            Text(
-                "All Concerts",
-                Modifier
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
                     .border(1.dp, Color.White)
                     .height(80.dp)
-                    .wrapContentSize()
-            )
+            ) {
+                Text(
+                    "All Concerts",
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier.wrapContentSize(Alignment.Center)
+                )
+            }
         }
         items(events) { topic ->
             EventCard(topic)
@@ -116,20 +146,27 @@ fun EventGrid(modifier: Modifier = Modifier) {
 
 @Composable
 fun EventCard(event: Event, modifier: Modifier = Modifier) {
-    Card {
-        Row {
-            Box {
+    Card(
+        modifier = modifier,
+
+    ) {
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(Color(android.graphics.Color.parseColor("#fad9e4")))
+                .padding(dimensionResource(R.dimen.padding_small))
+        ) {
+            Column {
                 Image(
                     painter = painterResource(id = event.imageResourceId),
                     contentDescription = null,
-                    modifier = modifier
-                        .size(width = 68.dp, height = 68.dp)
-                        .aspectRatio(1f),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(200.dp)
+                        .border(2.dp, Color.Black),
                     contentScale = ContentScale.Crop
                 )
-            }
 
-            Column {
                 Text(
                     text = event.name,
                     style = MaterialTheme.typography.bodyMedium,
@@ -140,24 +177,26 @@ fun EventCard(event: Event, modifier: Modifier = Modifier) {
                         bottom = dimensionResource(R.dimen.padding_small)
                     )
                 )
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text(
-                        text = event.availableSeats.toString(),
-                        style = MaterialTheme.typography.labelMedium,
-                        modifier = Modifier.padding(start = dimensionResource(R.dimen.padding_small))
-                    )
-                }
+                Text(
+                    text = event.availableSeats.toString(),
+                    style = MaterialTheme.typography.labelMedium,
+                    modifier = Modifier.padding(start = dimensionResource(R.dimen.padding_small))
+                )
             }
         }
     }
 }
 
+
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
- Lab5BiancaCalderonTheme {
-   EventGrid(
-     modifier = Modifier.padding(dimensionResource(R.dimen.padding_small))
-)
+    Lab5BiancaCalderonTheme {
+        EventGrid(
+            modifier = Modifier.padding(dimensionResource(R.dimen.padding_small))
+        )
+    }
 }
-}
+
+
+
