@@ -133,7 +133,7 @@ fun ProfileScreen(user: UserProfile, modifier: Modifier = Modifier) {
                         contentDescription = null,
                         modifier = Modifier
                             .size(24.dp)
-                            .padding(end = 8.dp)
+                                .padding(end = 8.dp)
                     )
                     Text(
                         text = "Reset Password",
