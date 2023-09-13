@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.example.lab5biancacalderon"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.lab5biancacalderon"
@@ -51,8 +51,17 @@ android {
 
 dependencies {
 
+    implementation ("androidx.navigation:navigation-compose:2.4.0-alpha01")
+    implementation ("androidx.navigation:navigation-fragment-ktx:2.4.0-alpha01")
+    implementation ("androidx.navigation:navigation-ui-ktx:2.4.0-alpha01")
+    val nav_version = "2.5.3"
+    val accompanist_version = "0.32.0"
+    implementation("com.google.accompanist:accompanist-pager:$accompanist_version")
+    implementation("com.google.accompanist:accompanist-pager-indicators:$accompanist_version")
+    implementation("androidx.navigation:navigation-compose:$nav_version")
+    implementation("io.coil-kt:coil-compose:2.4.0")
     implementation ("androidx.compose.ui:ui:1.0.0")
-    implementation ("androidx.navigation:navigation-compose:2.4.0")
+    implementation("androidx.navigation:navigation-compose:2.5.2")
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
     implementation("androidx.activity:activity-compose:1.7.2")

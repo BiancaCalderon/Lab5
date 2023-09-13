@@ -1,6 +1,4 @@
-package com.example.lab5biancacalderon
-
-import com.example.lab5biancacalderon.R
+package com.example.lab5biancacalderon.ui.theme.ui
 
 data class Concert(
     val title: String,

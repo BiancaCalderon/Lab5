@@ -7,27 +7,21 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentSize
-import androidx.compose.foundation.layout.wrapContentWidth
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -43,19 +37,47 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.lab5biancacalderon.ui.theme.Lab5BiancaCalderonTheme
+import com.example.lab5biancacalderon.ui.theme.model.Event
+import androidx.compose.runtime.remember
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import androidx.compose.ui.res.dimensionResource
+import androidx.compose.foundation.layout.padding
+import androidx.compose.runtime.remember
+import androidx.compose.ui.res.dimensionResource
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
         setContent {
             Lab5BiancaCalderonTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    EventGrid(
-                      modifier = Modifier.padding(dimensionResource(R.dimen.padding_small))
-                    )
+                    val navController = rememberNavController()
+                    NavHost(navController = navController, startDestination = "eventList") {
+                        composable("eventList") {
+                            EventGrid(
+                                modifier = Modifier.padding(dimensionResource(R.dimen.padding_small)),
+                                navController = navController
+                            )
+                        }
+                        composable("eventDetail/{eventId}") { backStackEntry ->
+                            // recordatorio: pantalla de detalle + eventId
+
+                        }
+                    }
                 }
             }
         }
@@ -64,13 +86,14 @@ class MainActivity : ComponentActivity() {
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun EventGrid(modifier: Modifier = Modifier) {
+fun EventGrid(modifier: Modifier = Modifier, navController: NavController) {
     val events = listOf(
-        Event("Imagine Dragons", 226, R.drawable.eventconcert1),
-        Event("Dua Lipa", 150, R.drawable.eventconcert2),
-        Event("The Vamps", 26, R.drawable.eventconcert3),
-        Event("Martin Garrix", 48, R.drawable.eventconcert4)
+        Event("ID1", "Imagine Dragons", 226, R.drawable.eventconcert1),
+        Event("ID2", "Dua Lipa", 150, R.drawable.eventconcert2),
+        Event("ID3", "The Vamps", 26, R.drawable.eventconcert3),
+        Event("ID4", "Martin Garrix", 48, R.drawable.eventconcert4)
     )
+
 
     val maxLineSpan = 2
 
@@ -121,8 +144,8 @@ fun EventGrid(modifier: Modifier = Modifier) {
                 )
             }
         }
-        items(events) { topic ->
-            EventCard(topic)
+        items(events) { event ->
+            EventCard(event, navController)
         }
         item(span = { GridItemSpan(maxLineSpan) }) {
             Box(
@@ -138,17 +161,21 @@ fun EventGrid(modifier: Modifier = Modifier) {
                 )
             }
         }
-        items(events) { topic ->
-            EventCard(topic)
+        items(events) { event ->
+            EventCard(event, navController)
         }
     }
 }
 
 @Composable
-fun EventCard(event: Event, modifier: Modifier = Modifier) {
+fun EventCard(event: Event, navController: NavController) {
     Card(
-        modifier = modifier,
-
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable {
+                // Navegar a la pantalla de detalle al hacer clic en la tarjeta
+                navController.navigate("eventDetail/${event.id}")
+            }
     ) {
         Box(
             modifier = Modifier
@@ -187,16 +214,13 @@ fun EventCard(event: Event, modifier: Modifier = Modifier) {
     }
 }
 
-
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
     Lab5BiancaCalderonTheme {
         EventGrid(
-            modifier = Modifier.padding(dimensionResource(R.dimen.padding_small))
+            modifier = Modifier.padding(dimensionResource(R.dimen.padding_small)),
+            navController = rememberNavController()
         )
     }
 }
-
-
-

@@ -1,4 +1,4 @@
-package com.example.lab5biancacalderon
+package com.example.lab5biancacalderon.ui.theme.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -9,7 +9,6 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -26,9 +25,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.lab5biancacalderon.Event
 import com.example.lab5biancacalderon.R
 import com.example.lab5biancacalderon.ui.theme.Lab5BiancaCalderonTheme
+import com.example.lab5biancacalderon.ui.theme.model.ConcertLocation
 
 class ListScreenActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,10 +39,14 @@ class ListScreenActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     val concertLocations = listOf(
-                        ConcertLocation("Imagine Dragons", "Los Angeles, CA", R.drawable.eventconcert1),
+                        ConcertLocation("Imagine Dragons", "Los Angeles, CA",
+                            R.drawable.eventconcert1
+                        ),
                         ConcertLocation("Dua Lipa", "New York, NY", R.drawable.eventconcert2),
                         ConcertLocation("The Vamps", "London, UK", R.drawable.eventconcert3),
-                        ConcertLocation("Martin Garrix", "Amsterdam, Netherlands", R.drawable.eventconcert4)
+                        ConcertLocation("Martin Garrix", "Amsterdam, Netherlands",
+                            R.drawable.eventconcert4
+                        )
                     )
                     ListScreen(concertLocations = concertLocations)
                 }

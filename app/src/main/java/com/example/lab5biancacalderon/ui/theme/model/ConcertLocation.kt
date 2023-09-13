@@ -1,4 +1,4 @@
-package com.example.lab5biancacalderon
+package com.example.lab5biancacalderon.ui.theme.model
 
 data class ConcertLocation(
     val bandName: String,
