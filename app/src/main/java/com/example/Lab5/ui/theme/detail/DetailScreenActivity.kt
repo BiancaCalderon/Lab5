@@ -7,7 +7,6 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -24,15 +23,16 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.lab5biancacalderon.R
-import com.example.lab5biancacalderon.ui.theme.Lab5BiancaCalderonTheme
+import com.example.lab6fnl.R
+import com.example.lab6fnl.ui.theme.LAB6FNLTheme
+import com.example.lab6fnl.ui.theme.concert.ConcertLocation
 
 
 class DetailScreenActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            Lab5BiancaCalderonTheme {
+            LAB6FNLTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
@@ -42,16 +42,22 @@ class DetailScreenActivity : ComponentActivity() {
                         "Los Angeles, CA",
                         R.drawable.eventconcert1
                     )
-                    DetailScreen(concertLocation = concertLocation)
+                    DetailScreen()
                 }
             }
         }
     }
 }
 @Composable
-fun DetailScreen(concertLocation: ConcertLocation, modifier: Modifier = Modifier) {
+fun DetailScreen() {
+    val concertLocation = ConcertLocation(
+        "Imagine Dragons",
+        "Los Angeles, CA",
+        R.drawable.eventconcert1
+    )
+
     Column(
-        modifier = modifier
+        modifier = Modifier
             .fillMaxSize()
             .padding(dimensionResource(R.dimen.padding_small))
     ) {
@@ -146,16 +152,12 @@ fun DetailScreen(concertLocation: ConcertLocation, modifier: Modifier = Modifier
 }
 
 
+
 @Preview(showBackground = true)
 @Composable
 fun DetailScreenPreview() {
-    Lab5BiancaCalderonTheme {
-        val concertLocation = ConcertLocation(
-            "Imagine Dragons",
-            "Los Angeles, CA",
-            R.drawable.eventconcert1
-        )
-        DetailScreen(concertLocation = concertLocation)
+    LAB6FNLTheme {
+        DetailScreen()
     }
 }
 

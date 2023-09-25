@@ -1,4 +1,4 @@
-package com.example.lab5biancacalderon.ui.theme
+package com.example.lab6fnl.ui.theme
 
 import android.app.Activity
 import android.os.Build
@@ -38,7 +38,7 @@ private val LightColorScheme = lightColorScheme(
 )
 
 @Composable
-fun Lab5BiancaCalderonTheme(
+fun LAB6FNLTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
     dynamicColor: Boolean = true,

@@ -1,4 +1,4 @@
-package com.example.lab5biancacalderon
+package com.example.lab6fnl.ui.theme.concert
 
 data class ConcertLocation(
     val bandName: String,
